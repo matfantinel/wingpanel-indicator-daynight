@@ -19,6 +19,7 @@
 
 public class Daynight.Indicator : Wingpanel.Indicator {
     public GLib.Settings settings;
+    public GLib.Settings interface_settings;
     private Gtk.Grid main_grid;
     private Gtk.Image display_icon;
     private GLib.KeyFile keyfile;
@@ -49,6 +50,7 @@ public class Daynight.Indicator : Wingpanel.Indicator {
 
         var gtk_settings = Gtk.Settings.get_default ();
         settings = new GLib.Settings("com.github.maze-n.indicator-daynight");
+        interface_settings = new GLib.Settings("org.gnome.desktop.interface");
 
         var indicator_logo = "display-brightness-symbolic";
         var is_dark = (get_integer("gtk-application-prefer-dark-theme") == 1) ? true : false;
@@ -92,12 +94,14 @@ public class Daynight.Indicator : Wingpanel.Indicator {
     }
 
     private void connect_signals() {
-        toggle_switch.notify["active"].connect (() => {
+        toggle_switch.notify["active"].connect (() => {            
             display_icon.set_from_icon_name (toggle_switch.active ? "weather-clear-night-symbolic" : "display-brightness-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
             if(toggle_switch.active){
                 set_integer("gtk-application-prefer-dark-theme", 1);
+                Posix.system("dconf write /org/gnome/desktop/interface/gtk-theme \"'elementary-dark'\"");
             } else {
                 set_integer("gtk-application-prefer-dark-theme", 0);
+                Posix.system("dconf write /org/gnome/desktop/interface/gtk-theme \"'elementary'\"");
             }
             if(settings.get_boolean("restart-on-toggle")) {
                 Posix.system("pkill plank");

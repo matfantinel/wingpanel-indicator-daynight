@@ -3,3 +3,8 @@ install_data(
     install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas'),
     rename: meson.project_name() + '.gschema.xml'
 )
+
+install_subdir(
+    'elementary-dark',
+    install_dir: join_paths('share', 'themes')
+)
