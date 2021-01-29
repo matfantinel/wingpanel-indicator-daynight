@@ -5,17 +5,6 @@
 <p align="center"><img src="https://raw.githubusercontent.com/maze-n/wingpanel-indicator-daynight/master/screenshots/screenshot-1.png" width="350">
 </p>
 
-## Install
-
-Get the .deb file from <a href="https://github.com/maze-n/wingpanel-indicator-daynight/releases/download/v1.1/wingpanel-indicator-daynight_1.1-1_amd64.deb">here</a>.
-Logout and then login after installation.
-
-## Uninstall
-
-```bash
-sudo apt remove wingpanel-indicator-daynight
-```
-
 ## Build & Run
 
 ```bash
@@ -36,13 +25,9 @@ sudo ninja install
 pkill wingpanel -9
 ```
 
-## Destroy
+## Uninstall
 
 ```bash
 cd build
 sudo ninja uninstall
 ```
-
-## Todo
-
-- [ ] Add time based automatic mode switching
