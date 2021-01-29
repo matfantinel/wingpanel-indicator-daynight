@@ -13,7 +13,7 @@ sudo apt install elementary-sdk meson libwingpanel-2.0-dev
 #install dependencies
 sudo apt install libglib2.0-dev libgranite-dev libxml2-dev
 # clone repository
-git clone https://github.com/maze-n/wingpanel-indicator-daynight.git wingpanel-indicator-daynight
+git clone https://github.com/matfantinel/wingpanel-indicator-daynight.git wingpanel-indicator-daynight
 # cd to dir
 cd wingpanel-indicator-daynight
 # run meson
